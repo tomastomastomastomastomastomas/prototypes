@@ -37,3 +37,34 @@ Car.prototype.constructor = Car;
 Car.prototype.opendDoors = function () {
   console.log("doors open");
 };
+
+function Motorcycle(brand, model, maxSpeed, sidecar) {
+  let vehicle = new Vehicle(brand, model, maxSpeed);
+  this.brand = vehicle.brand;
+  this.model = vehicle.model;
+  this.maxSpeed = vehicle.maxSpeed;
+  this.speed = vehicle.speed;
+
+  this.sidecar = sidecar;
+}
+
+Motorcycle.prototype = Object.create(Vehicle.prototype);
+Motorcycle.prototype.constructor = Motorcycle;
+
+Motorcycle.prototype.showSidecar = function () {
+  console.log(this.sidecar ? "has sidecar" : "does not have sidecar");
+};
+
+Vehicle.prototype.compareSpeed = function (vehicle) {
+  if (this.maxSpeed < vehicle.maxSpeed) {
+    console.log(
+      `the vehicle model ${vehicle.model} and brand ${vehicle.brand} is faster than the vehicle model ${this.model} and brand ${this.brand}`
+    );
+  } else if (this.maxSpeed > vehicle.maxSpeed) {
+    console.log(
+      `the vehicle model ${this.model} and brand ${this.brand} is faster than the vehicle model ${vehicle.model} and brand ${vehicle.brand}`
+    );
+  } else {
+    console.log("they have the same speed");
+  }
+};
