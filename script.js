@@ -68,3 +68,33 @@ Vehicle.prototype.compareSpeed = function (vehicle) {
     console.log("they have the same speed");
   }
 };
+
+let car1 = new Car("brand1", "model1", 300, 4);
+let car2 = new Car("brand2", "model2", 100, 3);
+let car3 = new Car("brand3", "model3", 250, 6);
+let car4 = new Car("brand4", "model4", 60, 5);
+
+car1.accelerate(120);
+car2.showInfo();
+car3.showInfo();
+car4.opendDoors();
+car3.compareSpeed(car1);
+car1.stop();
+
+let motorcycle1 = new Motorcycle(
+  "motorcycle brand1",
+  "motorcycle model1",
+  200,
+  true
+);
+let motorcycle2 = new Motorcycle(
+  "motorcycle brand2",
+  "motorcycle model2",
+  200,
+  false
+);
+motorcycle1.showInfo();
+motorcycle1.showSidecar();
+motorcycle2.showInfo();
+motorcycle2.showSidecar();
+motorcycle2.compareSpeed(motorcycle1);
