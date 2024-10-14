@@ -22,16 +22,11 @@ Vehicle.prototype.showInfo = function () {
 };
 
 function Car(brand, model, maxSpeed, doors) {
-  let vehicle = new Vehicle(brand, model, maxSpeed);
-  this.brand = vehicle.brand;
-  this.model = vehicle.model;
-  this.maxSpeed = vehicle.maxSpeed;
-  this.speed = vehicle.speed;
-
+  Vehicle.call(this, brand, model, maxSpeed);
   this.doors = doors;
 }
 
-Car.prototype = Object.create(Vehicle.prototype);
+Object.setPrototypeOf(Car.prototype, Vehicle.prototype);
 Car.prototype.constructor = Car;
 
 Car.prototype.opendDoors = function () {
@@ -39,16 +34,11 @@ Car.prototype.opendDoors = function () {
 };
 
 function Motorcycle(brand, model, maxSpeed, sidecar) {
-  let vehicle = new Vehicle(brand, model, maxSpeed);
-  this.brand = vehicle.brand;
-  this.model = vehicle.model;
-  this.maxSpeed = vehicle.maxSpeed;
-  this.speed = vehicle.speed;
-
+  Vehicle.call(this, brand, model, maxSpeed);
   this.sidecar = sidecar;
 }
 
-Motorcycle.prototype = Object.create(Vehicle.prototype);
+Object.setPrototypeOf(Motorcycle.prototype, Vehicle.prototype);
 Motorcycle.prototype.constructor = Motorcycle;
 
 Motorcycle.prototype.showSidecar = function () {
@@ -80,6 +70,8 @@ car3.showInfo();
 car4.opendDoors();
 car3.compareSpeed(car1);
 car1.stop();
+
+console.log(Vehicle.prototype);
 
 let motorcycle1 = new Motorcycle(
   "motorcycle brand1",
